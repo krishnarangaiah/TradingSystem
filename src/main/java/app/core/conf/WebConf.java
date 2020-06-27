@@ -1,5 +1,7 @@
-package core.conf;
+package app.core.conf;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
@@ -16,9 +18,11 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 @Configuration
 public class WebConf implements WebServerFactoryCustomizer<ConfigurableServletWebServerFactory>, WebMvcConfigurer {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(WebConf.class);
+
     @Override
     public void customize(ConfigurableServletWebServerFactory factory) {
-        //factory.
+        LOGGER.info("WebConfig ServeletFactory is: {}", factory);
     }
 
     @Override
