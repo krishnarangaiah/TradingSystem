@@ -1,9 +1,10 @@
-package app.trading.platform.instrument.def;
+package app.dao.model;
 
-import app.core.platform.nut.BaseNut;
 import com.google.gson.Gson;
 
-public interface Instrument extends BaseNut {
+import java.io.Serializable;
+
+public interface Instrument extends Serializable {
 
     Gson GSON = new Gson();
 

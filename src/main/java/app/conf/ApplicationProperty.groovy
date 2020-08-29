@@ -1,4 +1,4 @@
-package app.core.platform
+package app.conf
 
 import com.google.gson.Gson
 import org.slf4j.Logger
@@ -16,7 +16,7 @@ public class ApplicationProperty {
     private transient Gson gson;
 
     @Value('${app.name:Not Available}')
-    private String appName;
+    String appName;
 
     @Override
     public String toString() {

@@ -1,6 +1,6 @@
 package app;
 
-import app.core.platform.ApplicationProperty;
+import app.conf.ApplicationProperty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;

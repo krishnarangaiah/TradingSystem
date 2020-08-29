@@ -1,4 +1,4 @@
-package app.trading.platform.instrument.def;
+package app.dao.model;
 
 public enum Tenor {
 

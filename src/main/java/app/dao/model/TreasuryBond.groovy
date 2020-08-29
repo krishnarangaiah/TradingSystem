@@ -1,8 +1,6 @@
-package app.trading.platform.instrument
+package app.dao.model
 
-import app.trading.platform.instrument.def.Instrument
-import app.trading.platform.instrument.def.InstrumentType
-import app.trading.platform.instrument.def.Tenor
+
 import groovy.transform.MapConstructor
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
