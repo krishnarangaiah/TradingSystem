@@ -8,19 +8,19 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 
 @Component
-public class ApplicationProperty {
+class AppProperty {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ApplicationProperty.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AppProperty.class)
 
     @Autowired
-    private transient Gson gson;
+    private transient Gson gson
 
     @Value('${app.name:Not Available}')
-    String appName;
+    String appName
 
     @Override
-    public String toString() {
-        return gson.toJson(this);
+    String toString() {
+        return gson.toJson(this)
     }
 
 }

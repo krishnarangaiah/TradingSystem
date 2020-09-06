@@ -68,6 +68,6 @@ public class WebConf implements WebServerFactoryCustomizer<ConfigurableServletWe
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new AppBeforeInterceptor());
+        registry.addInterceptor(new AppGlobalRequestInterceptor());
     }
 }

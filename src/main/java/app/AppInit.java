@@ -1,6 +1,6 @@
 package app;
 
-import app.conf.ApplicationProperty;
+import app.conf.AppProperty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -18,8 +18,8 @@ public class AppInit {
         LOGGER.info("Application is Started successfully");
         LOGGER.info("-----------------------------------");
 
-        ApplicationProperty applicationProperty = appContext.getBean(ApplicationProperty.class);
-        LOGGER.info("Application is started with {}: {}", applicationProperty.getClass().getName(), applicationProperty.toString());
+        AppProperty appProperty = appContext.getBean(AppProperty.class);
+        LOGGER.info("Application is started with {}: {}", appProperty.getClass().getName(), appProperty.toString());
 
     }
 

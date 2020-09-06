@@ -1,4 +1,4 @@
-package app.dao.model
+package app.dao.model.user
 
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -12,5 +12,7 @@ class User {
     Long id;
     String userName
     String password
+
+    Role role
 
 }
