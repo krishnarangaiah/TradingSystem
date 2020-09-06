@@ -1,0 +1,1 @@
+$("#actionMsgId").show().delay(5000).fadeOut();
