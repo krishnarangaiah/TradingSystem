@@ -18,6 +18,12 @@ class AppProperty {
     @Value('${app.name:Not Available}')
     String appName
 
+    @Value('${app.admin.user:system}')
+    String appAdminUser
+
+    @Value('${app.admin.password:system}')
+    String appAdminPassword
+
     @Override
     String toString() {
         return gson.toJson(this)

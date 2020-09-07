@@ -15,7 +15,7 @@ class UserService {
     }
 
     User authenticate(String userName) {
-        return userRepo.findById(1);
+        return userRepo.findById(1L).orElse(null)
     }
 
     void save(User user) {
