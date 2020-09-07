@@ -3,7 +3,7 @@
 
 <div th:fragment="header">
     <head>
-        <title>Home page</title>
+        <title th:text="${appProperty.appName}"/>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css"/>
@@ -26,14 +26,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!--<button type="button" class="mr-auto btn btn-info btn-sm">
-            Notifications <span class="badge badge-light">4</span>
-        </button>-->
-
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-
             <ul class="navbar-nav mr-auto">
                 <!--
                 <li class="nav-item active">
@@ -62,6 +55,9 @@
             </ul>
 
             <ul class="navbar-nav my-2 my-lg-0">
+                <button type="button" class="mr-auto btn btn-info btn-sm">
+                    Msg <span class="badge badge-light">4</span>
+                </button>
                 <li class="nav-item active">
                     <a class="nav-link" href="/LoginForm">Login<span class="sr-only">(current)</span></a>
                 </li>

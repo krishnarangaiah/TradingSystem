@@ -1,6 +1,7 @@
 package app.http;
 
 import app.conf.AppProperty;
+import app.dao.model.user.Role;
 import app.dao.model.user.User;
 import app.dao.service.UserService;
 import app.model.SessionUser;
@@ -38,9 +39,20 @@ public class SessionController {
 
         final String appAdminUser = appProperty.getAppAdminUser();
         final String appAdminPassword = appProperty.getAppAdminPassword();
-        if(null != appAdminUser  && !appAdminUser.isEmpty() && appAdminUser.equals(userName)){
-            if(null != appAdminPassword && !appAdminPassword.isEmpty() && appAdminPassword.equals(password)){
+        if (null != appAdminUser && !appAdminUser.isEmpty() && appAdminUser.equals(userName)) {
+            if (null != appAdminPassword && !appAdminPassword.isEmpty() && appAdminPassword.equals(password)) {
+
                 User systemAdmin = new User();
+                systemAdmin.setId(-1L);
+                systemAdmin.setUserName(appAdminUser);
+                systemAdmin.setPassword(appAdminPassword);
+
+                SessionUser sessionUser = new SessionUser();
+                sessionUser.setSessionId(sessionId);
+                sessionUser.setUser(systemAdmin);
+                // httpSession.setAttribute("sessionUser", sessionUser);
+
+                return "layout/app/SuperAdmin.html";
 
             }
         }
