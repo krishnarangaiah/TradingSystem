@@ -1,7 +1,7 @@
 package app.http;
 
 import app.conf.AppProperty;
-import app.service.UserInterfaceContext;
+import app.session.SessionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +19,6 @@ public class AppController {
 
     @Autowired
     private AppProperty appProperty;
-    @Autowired
-    private UserInterfaceContext userInterfaceContext;
 
     @GetMapping(value = "/")
     public RedirectView home(RedirectAttributes attributes) {
@@ -30,10 +28,11 @@ public class AppController {
     @GetMapping(value = "/Landing")
     public String appHome(RedirectAttributes attributes, HttpSession session) {
 
-        if (session.isNew() || !userInterfaceContext.isSessionValid()) {
-            userInterfaceContext.setHttpSession(session);
+        if (SessionUtil.isSessionNew(session)) {
+            LOGGER.info("New SessionId: {}", session.getId());
             return "layout/app/Login.html";
-        } else if (null == userInterfaceContext.getSessionUser()) {
+        } else if(null == SessionUtil.getSessionUser(session)){
+            LOGGER.info("New SessionId: {}, User not logged in", session.getId());
             return "layout/app/Login.html";
         }
 

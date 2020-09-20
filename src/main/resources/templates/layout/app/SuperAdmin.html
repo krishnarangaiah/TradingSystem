@@ -60,11 +60,19 @@
 <script language="JavaScript">
 
     $('#addAdminId').submit(function( event ) {
+
         if($.trim($('#userNameId').val()) == ''){
             $('#userNameId').change().addClass('border border-danger');
             $('#userNameId').attr('placeholder', 'User Name is required');
             return false;
         }
+
+        if($.trim($('#passwordId').val()) == ''){
+            $('#passwordId').change().addClass('border border-danger');
+            $('#passwordId').attr('placeholder', 'Password is required');
+            return false;
+        }
+
         return true;
     });
 

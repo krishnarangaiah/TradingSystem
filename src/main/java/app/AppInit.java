@@ -19,7 +19,7 @@ public class AppInit {
         LOGGER.info("-----------------------------------");
 
         AppProperty appProperty = appContext.getBean(AppProperty.class);
-        LOGGER.info("Application is started with {}: {}", appProperty.getClass().getName(), appProperty.toString());
+        // LOGGER.info("Application is started with {}: {}", appProperty.getClass().getName(), appProperty);
 
     }
 

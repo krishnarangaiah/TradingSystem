@@ -3,7 +3,7 @@
 
 <div th:fragment="header">
     <head>
-        <title th:text="${userInterfaceContext.appProperty.appName}"/>
+        <title th:text="${appProperty.appName}"/>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css"/>
@@ -20,7 +20,7 @@
 <div th:fragment="nav">
 
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-        <a class="navbar-brand" href="/"><span th:text="${userInterfaceContext.appProperty.appName}"/></a>
+        <a class="navbar-brand" href="/"><span th:text="${appProperty.appName}"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -68,19 +68,19 @@
 
     <div style="display:block; width:100%; height:5em; padding-top:0.3em; padding-bottom:0.5em;">
         <center>
-                   <span th:if="${userInterfaceContext.actionMsg != null}">
+                   <span th:if="${session.ACTION_MSG != null}">
                        <div id="actionMsgId"  class="alert alert-success" role="alert" style="width: 60%;">
-                           <span th:text="${userInterfaceContext.actionMsg}"/>
+                           <span th:text="${session.ACTION_MSG}"/>
                        </div>
                    </span>
-            <span th:if="${userInterfaceContext.warnMsg != null}">
+            <span th:if="${session.WARN_MSG != null}">
                        <div id="warnMsgId" class="alert alert-warning" role="alert" style="width: 60%;">
-                           <span th:text="${userInterfaceContext.warnMsg}"/>
+                           <span th:text="${session.WARN_MSG}"/>
                        </div>
                    </span>
-            <span th:if="${userInterfaceContext.errorMsg != null}">
+            <span th:if="${session.ERROR_MSG != null}">
                        <div id="errorMsgId" class="alert  alert-danger" role="alert" style="width: 60%;">
-                           <span th:text="${userInterfaceContext.errorMsg}"/>
+                           <span th:text="${session.ERROR_MSG}"/>
                        </div>
                    </span>
 
