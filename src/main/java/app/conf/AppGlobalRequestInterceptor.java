@@ -23,7 +23,9 @@ public class AppGlobalRequestInterceptor extends HandlerInterceptorAdapter {
         LOGGER.info("PreHandle SessionId: {}, RequestURI: {}", request.getSession().getId(), request.getRequestURI());
 
         HttpSession session = request.getSession();
-        if (null == SessionUtil.getSessionUser(session) && !request.getRequestURI().equals("/LoginForm")) {
+        if (request.getRequestURI().equals("/LoginForm") || request.getRequestURI().equals("/Login")) {
+            return super.preHandle(request, response, handler);
+        } else if (null == SessionUtil.getSessionUser(session)) {
             response.sendRedirect("/LoginForm");
             return false;
         } else {
