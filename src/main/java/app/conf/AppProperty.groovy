@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 
 @Component
-class AppProperty {
+class AppProperty implements Serializable{
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AppProperty.class)
 
@@ -22,7 +22,7 @@ class AppProperty {
     String appAdminUser
 
     @Value('${app.admin.password:system}')
-    String appAdminPassword
+    transient String appAdminPassword
 
     @Override
     String toString() {

@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue
 import javax.persistence.Id
 
 @Entity
-class User {
+class User implements Serializable{
 
     @Id
     @GeneratedValue

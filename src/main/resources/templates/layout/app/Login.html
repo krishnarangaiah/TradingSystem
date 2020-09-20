@@ -8,29 +8,41 @@
 <body>
 <div th:insert="layout/appLayout.html :: nav"></div>
 
-<div class="container-fluid h-100 text-dark">
+<div class="container-fluid h-100">
     <div class="row justify-content-center align-items-center h-100">
-        <div class="col col-xl-4">
-            <form action="/Login" method="post">
-                <div class="form-group">
-                    <label for="userNameId">User Name</label>
-                    <input type="text" class="form-control" id="userNameId" placeholder="User Name">
-                </div>
-                <div class="form-group">
-                    <label for="passwordId">Password</label>
-                    <input type="text" class="form-control" id="passwordId" placeholder="Password">
-                </div>
-                <center>
-                    <div class="form-group">
-                        <div class="col">
-                            <button type="submit" class="btn btn-primary">Sign in</button>
-                        </div>
+        <div class="card border-secondary" style="width: 50%">
+            <h5 class="card-header bg-info text-white mb-3">Login</h5>
+            <div class="card-body">
+                <div class="row justify-content-center align-items-center h-100">
+                    <div class="col col-xl-6">
+                        <form action="/Login" method="post">
+                            <div class="form-group">
+                                <label for="userNameId">User Name</label>
+                                <input type="text" class="form-control" id="userNameId" name="userName"
+                                       placeholder="User Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="passwordId">Password</label>
+                                <input type="text" class="form-control" id="passwordId" name="password"
+                                       placeholder="Password">
+                            </div>
+                            <center>
+                                <div class="form-group">
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success">Sign in</button>
+                                    </div>
+                                </div>
+                            </center>
+                        </form>
                     </div>
-                </center>
-            </form>
+                </div>
+            </div>
+
+
         </div>
     </div>
 </div>
+
 
 </body>
 </html>
