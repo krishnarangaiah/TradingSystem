@@ -3,18 +3,21 @@
 
 <html>
 <head>
-    <header th:insert="layout/appLayout.html :: header"></header>
+    <header th:insert="layout/AppLayout.html :: header"></header>
 </head>
 <body>
-<div th:insert="layout/appLayout.html :: nav"></div>
+<div th:insert="layout/AppLayout.html :: nav"></div>
 
 <div class="container-fluid h-100">
     <div class="row justify-content-center align-items-center h-100">
-        <div class="card border-secondary" style="width: 50%">
-            <h5 class="card-header bg-info text-white mb-3">Login</h5>
+
+        <div class="card border-secondary" style="width: 40%">
+            <h6 class="card-header bg-info text-white mb-0"> <i class="fa fa-user-o"
+                                                                aria-hidden="true"></i> Login </h6>
             <div class="card-body">
+
                 <div class="row justify-content-center align-items-center h-100">
-                    <div class="col col-xl-6">
+                    <div class="col col-xl-10">
                         <form action="/Login" method="post">
                             <div class="form-group">
                                 <label for="userNameId">User Name</label>
@@ -29,7 +32,7 @@
                             <center>
                                 <div class="form-group">
                                     <div class="col">
-                                        <button type="submit" class="btn btn-success">Sign in</button>
+                                        <button type="submit" class="btn btn-secondary">Sign in</button>
                                     </div>
                                 </div>
                             </center>

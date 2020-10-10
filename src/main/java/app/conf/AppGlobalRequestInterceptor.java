@@ -23,19 +23,21 @@ public class AppGlobalRequestInterceptor extends HandlerInterceptorAdapter {
             "/Login",
             "/LoginForm",
             "/webjars/bootstrap/4.5.0/css/bootstrap.min.css",
+            "/webjars/font-awesome/4.7.0/css/font-awesome.min.css",
             "/webjars/bootstrap/4.5.0/js/bootstrap.min.js",
             "/webjars/jquery/3.5.1/jquery.min.js",
             "/webjars/d3js/5.16.0/d3.min.js",
             "/js/app.js",
             "/css/app.css",
-            "/favicon.ico"
+            "/favicon.ico",
+            "/error"
     );
 
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        LOGGER.info("PreHandle SessionId: {}, RequestContextPath: {}, RequestURI: {}", request.getSession().getId(), request.getContextPath(), request.getRequestURI());
+        // LOGGER.info("PreHandle SessionId: {}, RequestContextPath: {}, RequestURI: {}", request.getSession().getId(), request.getContextPath(), request.getRequestURI());
 
         HttpSession session = request.getSession();
         if (ALLOWED_URIS.contains(request.getRequestURI())) {

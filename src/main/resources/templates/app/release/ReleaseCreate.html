@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<html>
+<head>
+    <header th:insert="layout/AppLayout.html :: header"></header>
+</head>
+<body>
+<div th:insert="layout/AppLayout.html :: nav"></div>
+
+<div class="container-fluid h-100">
+
+    <div class="row justify-content-center align-items-center h-100">
+
+        <div class="card border-secondary" style="width: 95%">
+            <h6 class="card-header bg-info text-white mb-3">Release Management</h6>
+            <div class="card-body">
+                <div class="row justify-content-center align-items-center h-100">
+                    <div class="col col-xl-12">
+                        <form id="addAdminId" action="/Release/Create" method="post">
+
+                            <div class="row">
+
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="releaseNameId">Release Name</label>
+                                        <input id="releaseNameId" name="releaseName" type="text" class="form-control"
+                                               placeholder="Release Name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="releaseDateId">Release Date</label>
+                                        <input id="releaseDateId" name="releaseDate" type="text" class="form-control"
+                                               placeholder="yyyy-mm-dd">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="ownerId">Owner</label>
+                                        <input id="ownerId" name="owner" type="text" class="form-control"
+                                               placeholder="Owner">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="alertDateId">Start Alerting from</label>
+                                        <input id="alertDateId" name="owner" type="text" class="form-control"
+                                               placeholder="yyyy-mm-dd">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!--<div class="row justify-content-center align-items-center">
+
+                                <div class="col col-sm-6">
+                                    <div class=" form-group">
+                                        <label for="descriptionId">Description</label>
+                                        <textarea class="form-control" id="descriptionId" rows="3"></textarea>
+                                    </div>
+                                </div>
+
+                            </div>-->
+
+                            <div class="row">
+                                <div class="col">
+                                    <center>
+                                        <div class="form-group">
+                                            <div class="col">
+                                                <button type="submit" class="btn btn-secondary">Save</button>
+                                            </div>
+                                        </div>
+                                    </center>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -27,17 +27,14 @@ public class AppController {
 
     @GetMapping(value = "/Landing")
     public String appHome(RedirectAttributes attributes, HttpSession session) {
-
         if (SessionUtil.isSessionNew(session)) {
             LOGGER.info("New SessionId: {}", session.getId());
-            return "layout/app/Login.html";
+            return "app/Login.html";
         } else if(null == SessionUtil.getSessionUser(session)){
             LOGGER.info("New SessionId: {}, User not logged in", session.getId());
-            return "layout/app/Login.html";
+            return "app/Login.html";
         }
-
-        return "layout/app/Home.html";
-
+        return "app/Home.html";
     }
 
 }

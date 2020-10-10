@@ -1,6 +1,7 @@
 package app.http;
 
 import app.conf.AppProperty;
+import app.dao.model.user.Role;
 import app.dao.model.user.User;
 import app.dao.service.UserService;
 import app.session.SessionUtil;
@@ -8,12 +9,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -27,7 +31,7 @@ public class UserController {
 
     @GetMapping(value = "/LoginForm")
     public String loginForm(RedirectAttributes attributes) {
-        return "layout/app/Login.html";
+        return "app/Login.html";
     }
 
     @PostMapping(value = "/Login")
@@ -45,10 +49,56 @@ public class UserController {
 
             SessionUtil.setSessionUser(session, systemAdmin);
 
-            return "layout/app/SuperAdmin.html";
+            return "app/SuperAdmin.html";
+        } else {
+
+            List<User> users = userService.authenticate(userName);
+
+            if (null != users) {
+                if (!users.isEmpty()) {
+                    if (users.size() == 1) {
+                        User user = users.get(0);
+                        if (user.getPassword().equals(password)) {
+                            LOGGER.info("");
+                        }
+                    } else {
+
+                    }
+                }
+            } else {
+                throw new RuntimeException();
+            }
+
+            LOGGER.info("User is: {}", users);
+
         }
 
-        return "layout/app/Home.html";
+        return "app/Home.html";
 
     }
+
+    @GetMapping(value = "/User/Create")
+    public String create(Model model) {
+        return "app/user/Create.html";
+    }
+
+    @PostMapping(value = "/User/Save")
+    public RedirectView save(Model model, @RequestParam String userName, @RequestParam String role) {
+
+        User user = new User();
+        user.setUserName(userName);
+        user.setPassword("0000");
+        user.setRole(Role.valueOf(role));
+        userService.save(user);
+
+        return new RedirectView("/User/List");
+    }
+
+    @GetMapping(value = "/User/List")
+    public String list(Model model) {
+        List<User> users = userService.findAll();
+        model.addAttribute("users", users);
+        return "app/user/List.html";
+    }
+
 }
