@@ -20,8 +20,8 @@ public class AppGlobalRequestInterceptor extends HandlerInterceptorAdapter {
     private final AppProperty appProperty = AppBeanContextService.getBeanFromContext(AppProperty.class);
 
     private final List<String> ALLOWED_URIS = Arrays.asList(
-            "/Login",
-            "/LoginForm",
+            "/User/Login",
+            "/User/LoginForm",
             "/webjars/bootstrap/4.5.0/css/bootstrap.min.css",
             "/webjars/font-awesome/4.7.0/css/font-awesome.min.css",
             "/webjars/bootstrap/4.5.0/js/bootstrap.min.js",
@@ -30,7 +30,11 @@ public class AppGlobalRequestInterceptor extends HandlerInterceptorAdapter {
             "/js/app.js",
             "/css/app.css",
             "/favicon.ico",
-            "/error"
+            "/error",
+            "/webjars/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2",
+            "/webjars/font-awesome/4.7.0/fonts/fontawesome-webfont.woff",
+            "/webjars/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf",
+            "/webjars/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2"
     );
 
 
@@ -43,7 +47,7 @@ public class AppGlobalRequestInterceptor extends HandlerInterceptorAdapter {
         if (ALLOWED_URIS.contains(request.getRequestURI())) {
             return super.preHandle(request, response, handler);
         } else if (null == SessionUtil.getSessionUser(session)) {
-            response.sendRedirect(request.getContextPath() + "/LoginForm");
+            response.sendRedirect(request.getContextPath() + "/User/LoginForm");
             return false;
         } else {
             return super.preHandle(request, response, handler);

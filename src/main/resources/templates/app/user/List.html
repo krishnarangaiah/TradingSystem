@@ -10,13 +10,6 @@
         text-align: center;
     }
 
-
-
-
-
-
-
-
     </style>
 
 </head>
@@ -29,35 +22,35 @@
 
         <div class="card border-secondary" style="width: 60%">
             <h6 class="card-header bg-info text-white mb-0">
-                <i class="fa fa-address-book-o" aria-hidden="true"></i> Users
+                <i class="fa fa-address-book-o" aria-hidden="true"> | </i> Users
                 <span style="float: right;"> <a href="/User/Create"> <i class="fa fa-user-o"
                                                                         aria-hidden="true"></i> </a> </span>
             </h6>
-            <div class="table-responsive">
-                <table class="card-body table table-bordered mb-0">
-                    <thead>
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">User Name</th>
-                        <th scope="col">Password</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Login Count</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="user: ${users}">
-                        <td th:text="${user.id}"/>
-                        <td th:text="${user.userName}"/>
-                        <td th:text="${user.password}"/>
-                        <td th:text="${user.role}"/>
-                        <td th:text="${user.loginCount}"/>
-                        <td><a href="#"><i class="fa fa-eye" style="color: gray;" aria-hidden="true"></i></a> | <a
-                                href="#"><i class="fa fa-times" style="color: gray;" aria-hidden="true"></i></a></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+
+            <table class="card-body table-sm table-bordered mb-0">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">User Name</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Login Count</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user: ${users}">
+                    <td th:text="${user.id}"/>
+                    <td th:text="${user.userName}"/>
+                    <td th:text="${user.password}"/>
+                    <td th:text="${user.role}"/>
+                    <td th:text="${user.loginCount}"/>
+                    <td><a th:href="@{/User/Read/?id={id}(id=${user.id})}"><i class="fa fa-eye" style="color: gray;" aria-hidden="true"></i></a> | <a
+                            href="#"><i class="fa fa-times" style="color: gray;" aria-hidden="true"></i></a></td>
+                </tr>
+                </tbody>
+            </table>
+
         </div>
 
     </div>

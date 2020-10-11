@@ -50,12 +50,12 @@
             <ul class="navbar-nav my-2 my-lg-0">
                 <span th:if="${session.USER != null}">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/LoginForm">Logout<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/User/LoginForm">Logout<span class="sr-only">(current)</span></a>
                     </li>
                 </span>
                 <span th:if="${session.USER == null}">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/LoginForm">Login<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/User/LoginForm">Login<span class="sr-only">(current)</span></a>
                     </li>
                 </span>
             </ul>

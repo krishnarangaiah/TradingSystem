@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -29,16 +30,17 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping(value = "/LoginForm")
+    @GetMapping(value = "/User/LoginForm")
     public String loginForm(RedirectAttributes attributes) {
-        return "app/Login.html";
+        return "app/user/Login.html";
     }
 
-    @PostMapping(value = "/Login")
+    @PostMapping(value = "/User/Login")
     public String login(HttpSession session, @RequestParam String userName, @RequestParam String password) {
 
         final String appAdminUser = appProperty.getAppAdminUser();
         final String appAdminPassword = appProperty.getAppAdminPassword();
+        boolean authenticated = false;
 
         if (appAdminUser.equals(userName) && appAdminPassword.equals(password)) {
 
@@ -46,10 +48,9 @@ public class UserController {
             systemAdmin.setId(-1L);
             systemAdmin.setUserName(appAdminUser);
             systemAdmin.setPassword(appAdminPassword);
-
             SessionUtil.setSessionUser(session, systemAdmin);
+            authenticated = true;
 
-            return "app/SuperAdmin.html";
         } else {
 
             List<User> users = userService.authenticate(userName);
@@ -66,10 +67,9 @@ public class UserController {
                     }
                 }
             } else {
-                throw new RuntimeException();
+                SessionUtil.setActionMsg(session, "User " + userName + " is not recognized");
             }
 
-            LOGGER.info("User is: {}", users);
 
         }
 
@@ -99,6 +99,13 @@ public class UserController {
         List<User> users = userService.findAll();
         model.addAttribute("users", users);
         return "app/user/List.html";
+    }
+
+    @GetMapping(value = "/User/Read")
+    public String read(Model model, @RequestParam String id) {
+        User user = userService.findById(Long.parseLong(id));
+        model.addAttribute(user);
+        return "app/user/Read.html";
     }
 
 }

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<html>
+<head>
+    <header th:insert="layout/AppLayout.html :: header"></header>
+</head>
+<body>
+<div th:insert="layout/AppLayout.html :: nav"></div>
+
+<div class="container-fluid h-100">
+
+    <div class="row justify-content-center align-items-center h-100">
+
+        <div class="card border-secondary" style="width: 60%">
+            <h6 class="card-header bg-info text-white mb-0"><i class="fa fa-user-o"
+                                                               aria-hidden="true"></i> Update User</h6>
+            <div class="card-body">
+                <div class="row justify-content-center align-items-center h-100">
+                    <div class="col col-xl-12">
+                        <form id="addAdminId" action="/User/Save" method="post">
+
+                            <div class="row">
+
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="userNameId">User Name</label>
+                                        <input id="userNameId" name="userName" type="text" class="form-control"
+                                               th:value="${user.userName}">
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="roleId">Role</label>
+                                        <select id="roleId" name="role" class="form-control">
+                                            <option th:each="roleOpt : ${T(app.dao.model.user.Role).values()}"
+                                                    th:value="${roleOpt}" th:text="${roleOpt}"
+                                                    th:selected="${roleOpt==user.role}">
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <br/>
+
+                            <div class="row">
+                                <div class="col">
+                                    <center>
+                                        <div class="form-group">
+                                            <div class="col">
+                                                <button type="submit" class="btn btn-secondary">Save</button>
+                                            </div>
+                                        </div>
+                                    </center>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

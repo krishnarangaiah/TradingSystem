@@ -10,6 +10,15 @@ class UserService {
     @Autowired
     private UserRepo userRepo
 
+    void save(User user) {
+        userRepo.save(user)
+    }
+
+    User findById(Long id){
+        return userRepo.findById(id).orElse(null)
+    }
+
+
     List<User> findAll() {
         return userRepo.findAll()
     }
@@ -18,8 +27,7 @@ class UserService {
         return userRepo.findByUserName(userName)
     }
 
-    void save(User user) {
-        userRepo.save(user)
-    }
+
+
 
 }
