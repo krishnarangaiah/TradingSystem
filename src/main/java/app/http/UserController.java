@@ -72,9 +72,7 @@ public class UserController {
 
 
         }
-
         return "app/Home.html";
-
     }
 
     @GetMapping(value = "/User/Create")
@@ -83,14 +81,13 @@ public class UserController {
     }
 
     @PostMapping(value = "/User/Save")
-    public RedirectView save(Model model, @RequestParam String userName, @RequestParam String role) {
-
+    public RedirectView save(Model model, @RequestParam String userName, @RequestParam String role, @RequestParam String email) {
         User user = new User();
         user.setUserName(userName);
         user.setPassword("0000");
         user.setRole(Role.valueOf(role));
+        user.setEmail(email);
         userService.save(user);
-
         return new RedirectView("/User/List");
     }
 
@@ -106,6 +103,25 @@ public class UserController {
         User user = userService.findById(Long.parseLong(id));
         model.addAttribute(user);
         return "app/user/Read.html";
+    }
+
+    @PostMapping(value = "/User/Update")
+    public RedirectView update(Model model, @RequestParam String id, @RequestParam String userName, @RequestParam String role, @RequestParam String email) {
+        User user = userService.findById(Long.parseLong(id));
+        user.setUserName(userName);
+        user.setPassword("0000");
+        user.setRole(Role.valueOf(role));
+        user.setEmail(email);
+        userService.save(user);
+        return new RedirectView("/User/List");
+    }
+
+    @GetMapping(value = "/User/Delete")
+    public RedirectView delete(Model model, @RequestParam String id) {
+        User user = userService.findById(Long.parseLong(id));
+        userService.delete(user);
+        model.addAttribute(user);
+        return new RedirectView("/User/List");
     }
 
 }

@@ -20,6 +20,8 @@ class User implements Serializable {
     @Column(nullable = false)
     Role role
     @Column(nullable = false)
+    String email
+    @Column(nullable = false, columnDefinition = "int default 0")
     int loginCount
 
 }

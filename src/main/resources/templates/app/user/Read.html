@@ -18,7 +18,7 @@
             <div class="card-body">
                 <div class="row justify-content-center align-items-center h-100">
                     <div class="col col-xl-12">
-                        <form id="addAdminId" action="/User/Save" method="post">
+                        <form id="addAdminId" action="/User/Update" method="post">
 
                             <div class="row">
 
@@ -44,8 +44,20 @@
 
                             </div>
 
-                            <br/>
+                            <div class="row">
 
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="emailId">Email</label>
+                                        <input id="emailId" name="email" type="text" class="form-control"
+                                               th:value="${user.email}">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <br/>
+                            <input type="hidden" name="id" th:value="${user.id}">
                             <div class="row">
                                 <div class="col">
                                     <center>
@@ -57,11 +69,11 @@
                                     </center>
                                 </div>
                             </div>
+
                         </form>
                     </div>
                 </div>
             </div>
-
 
         </div>
 

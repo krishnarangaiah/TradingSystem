@@ -14,10 +14,13 @@ class UserService {
         userRepo.save(user)
     }
 
-    User findById(Long id){
+    User findById(Long id) {
         return userRepo.findById(id).orElse(null)
     }
 
+    void delete(User user) {
+        userRepo.delete(user)
+    }
 
     List<User> findAll() {
         return userRepo.findAll()
@@ -26,8 +29,5 @@ class UserService {
     List<User> authenticate(String userName) {
         return userRepo.findByUserName(userName)
     }
-
-
-
 
 }
