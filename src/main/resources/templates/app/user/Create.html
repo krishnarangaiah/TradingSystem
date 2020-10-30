@@ -4,6 +4,21 @@
 <html>
 <head>
     <header th:insert="layout/AppLayout.html :: header"></header>
+
+    <script language="JavaScript">
+
+    $(function() {
+        $('#createUserFormId').submit(function(e) {
+            e.preventDefault();
+            if(!$('#userNameId').val()){
+                $('#userNameId').attr("placeholder", "This field is required");
+                $('#userNameId').addClass("border-warning");
+            }
+        });
+    });
+
+    </script>
+
 </head>
 <body>
 <div th:insert="layout/AppLayout.html :: nav"></div>
@@ -22,7 +37,7 @@
             <div class="card-body">
                 <div class="row justify-content-center align-items-center h-100">
                     <div class="col col-xl-12">
-                        <form id="addAdminId" action="/User/Save" method="post">
+                        <form id="createUserFormId" action="/User/Save" method="post">
 
                             <div class="row">
 

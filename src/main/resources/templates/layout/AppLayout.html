@@ -28,19 +28,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        Admin
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/User/List">User</a>
-                        <a class="dropdown-item" href="/Release/Landing">Release</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Disabled</a>
                 </li>
@@ -48,6 +36,25 @@
             </ul>
 
             <ul class="navbar-nav my-2 my-lg-0">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp;Admin
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/User/List">
+                            <i class="fa fa-user fa-fw" aria-hidden="true"></i>&nbsp; User
+                        </a>
+                        <a class="dropdown-item" href="/Release/Landing">
+                            <i class="fa fa-book fa-fw" aria-hidden="true"></i>&nbsp; Release
+                        </a>
+                        <!--<div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>-->
+                    </div>
+                </li>
+
                 <span th:if="${session.USER != null}">
                     <li class="nav-item active">
                         <a class="nav-link" href="/User/LoginForm">Logout<span class="sr-only">(current)</span></a>
