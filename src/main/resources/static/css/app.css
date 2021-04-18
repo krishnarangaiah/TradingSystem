@@ -4,3 +4,7 @@
   height: 1px;
   background: #656D78;
 }
+
+.noFocus-border{
+  outline: none;
+}
