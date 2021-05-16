@@ -49,6 +49,9 @@ public class AppGlobalRequestInterceptor extends HandlerInterceptorAdapter {
         } else if (null == SessionUtil.getSessionUser(session)) {
             response.sendRedirect(request.getContextPath() + "/User/LoginForm");
             return false;
+        } else if (!session.getId().equals(SessionUtil.getSessionUser(session).getSessionId())) {
+            response.sendRedirect(request.getContextPath() + "/User/LoginForm");
+            return false;
         } else {
             return super.preHandle(request, response, handler);
         }

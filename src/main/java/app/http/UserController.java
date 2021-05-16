@@ -48,6 +48,7 @@ public class UserController {
             systemAdmin.setId(-1L);
             systemAdmin.setUserName(appAdminUser);
             systemAdmin.setPassword(appAdminPassword);
+            systemAdmin.setSessionId(session.getId());
             SessionUtil.setSessionUser(session, systemAdmin);
             authenticated = true;
 
@@ -60,6 +61,7 @@ public class UserController {
                     if (users.size() == 1) {
                         User user = users.get(0);
                         if (user.getPassword().equals(password)) {
+                            user.setSessionId(session.getId());
                             LOGGER.info("");
                         }
                     } else {

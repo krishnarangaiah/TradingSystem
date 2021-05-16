@@ -23,5 +23,7 @@ class User implements Serializable {
     String email
     @Column(nullable = false, columnDefinition = "int default 0")
     int loginCount
+    @Column
+    String sessionId
 
 }

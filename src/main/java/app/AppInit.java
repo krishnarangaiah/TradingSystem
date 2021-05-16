@@ -17,9 +17,8 @@ public class AppInit {
         LOGGER.info("-----------------------------------");
         LOGGER.info("Application is Started successfully");
         LOGGER.info("-----------------------------------");
-
         AppProperty appProperty = appContext.getBean(AppProperty.class);
-        // LOGGER.info("Application is started with {}: {}", appProperty.getClass().getName(), appProperty);
+        LOGGER.info("Application is started with {}: {}", appProperty.getClass().getName(), appProperty);
 
     }
 
