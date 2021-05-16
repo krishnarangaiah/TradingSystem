@@ -71,25 +71,24 @@
 
     <div style="display:block; width:100%; height:5em; padding-top:0.3em; padding-bottom:0.5em;">
         <center>
-                   <span th:if="${session.ACTION_MSG != null}">
-                       <div id="actionMsgId" class="alert alert-success" role="alert" style="width: 60%;">
-                           <span th:text="${session.ACTION_MSG}"/>
-                       </div>
-                   </span>
-            <span th:if="${session.WARN_MSG != null}">
-                       <div id="warnMsgId" class="alert alert-warning" role="alert" style="width: 60%;">
-                           <span th:text="${session.WARN_MSG}"/>
-                       </div>
-                   </span>
             <span th:if="${session.ERROR_MSG != null}">
-                       <div id="errorMsgId" class="alert  alert-danger" role="alert" style="width: 60%;">
-                           <span th:text="${session.ERROR_MSG}"/>
-                       </div>
-                   </span>
-
+                <div id="errorMsgId" class="alert  alert-danger" role="alert" style="width: 60%;">
+                    <span th:text="${session.ERROR_MSG}"/>
+                </div>
+            </span>
+            <span th:if="${session.WARN_MSG != null}">
+                <div id="warnMsgId" class="alert alert-warning" role="alert" style="width: 60%;">
+                    <span th:text="${session.WARN_MSG}"/>
+                </div>
+            </span>
+            <span th:if="${session.ACTION_MSG != null}">
+                <div id="actionMsgId" class="alert alert-success" role="alert" style="width: 60%;">
+                    <span th:text="${session.ACTION_MSG}"/>
+                </div>
+            </span>
         </center>
     </div>
-
+    <span th:text="${T(app.session.SessionUtil).cleanViewedMsgs(#session)}"></span>
     <script type="text/javascript" th:src="@{/js/app.js}"></script>
 </div>
 

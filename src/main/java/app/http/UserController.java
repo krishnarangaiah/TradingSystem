@@ -52,6 +52,10 @@ public class UserController {
             SessionUtil.setSessionUser(session, systemAdmin);
             authenticated = true;
 
+            LOGGER.info("User {} Authenticated successfully", userName);
+            SessionUtil.setWarnMsg(session, "User " + userName + " logged in as System User");
+            return "app/Home.html";
+
         } else {
 
             List<User> users = userService.authenticate(userName);
@@ -62,19 +66,26 @@ public class UserController {
                         User user = users.get(0);
                         if (user.getPassword().equals(password)) {
                             user.setSessionId(session.getId());
-                            LOGGER.info("");
+                            LOGGER.info("User {} Authenticated successfully", userName);
+                            return "app/Home.html";
+                        } else {
+                            SessionUtil.setErrorMsg(session, "User " + userName + " is not recognized");
+                            return "app/user/Login.html";
                         }
                     } else {
-
+                        SessionUtil.setErrorMsg(session, "Multiple users exists with name " + userName);
+                        return "app/user/Login.html";
                     }
+                } else {
+                    SessionUtil.setErrorMsg(session, "User " + userName + " is not recognized");
+                    return "app/user/Login.html";
                 }
             } else {
-                SessionUtil.setActionMsg(session, "User " + userName + " is not recognized");
+                SessionUtil.setErrorMsg(session, "User " + userName + " is not recognized");
+                return "app/user/Login.html";
             }
-
-
         }
-        return "app/Home.html";
+
     }
 
     @GetMapping(value = "/User/Create")

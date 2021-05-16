@@ -17,11 +17,10 @@ import java.util.Map;
 public class AppGlobalRequestInterceptor extends HandlerInterceptorAdapter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AppGlobalRequestInterceptor.class);
-    private final AppProperty appProperty = AppBeanContextService.getBeanFromContext(AppProperty.class);
-
-    private final List<String> ALLOWED_URIS = Arrays.asList(
+    private static final String LOGIN_FORM = "User/LoginForm";
+    private static final List<String> ALLOWED_URIS = Arrays.asList(
             "/User/Login",
-            "/User/LoginForm",
+            LOGIN_FORM,
             "/webjars/bootstrap/4.5.0/css/bootstrap.min.css",
             "/webjars/font-awesome/4.7.0/css/font-awesome.min.css",
             "/webjars/bootstrap/4.5.0/js/bootstrap.min.js",
@@ -36,7 +35,7 @@ public class AppGlobalRequestInterceptor extends HandlerInterceptorAdapter {
             "/webjars/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf",
             "/webjars/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2"
     );
-
+    private final AppProperty appProperty = AppBeanContextService.getBeanFromContext(AppProperty.class);
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -46,11 +45,9 @@ public class AppGlobalRequestInterceptor extends HandlerInterceptorAdapter {
         HttpSession session = request.getSession();
         if (ALLOWED_URIS.contains(request.getRequestURI())) {
             return super.preHandle(request, response, handler);
-        } else if (null == SessionUtil.getSessionUser(session)) {
-            response.sendRedirect(request.getContextPath() + "/User/LoginForm");
-            return false;
-        } else if (!session.getId().equals(SessionUtil.getSessionUser(session).getSessionId())) {
-            response.sendRedirect(request.getContextPath() + "/User/LoginForm");
+        } else if ((null == SessionUtil.getSessionUser(session))
+                || (!session.getId().equals(SessionUtil.getSessionUser(session).getSessionId()))) {
+            response.sendRedirect(request.getContextPath() + LOGIN_FORM);
             return false;
         } else {
             return super.preHandle(request, response, handler);
