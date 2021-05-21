@@ -17,7 +17,7 @@ import java.util.Map;
 public class AppGlobalRequestInterceptor extends HandlerInterceptorAdapter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AppGlobalRequestInterceptor.class);
-    private static final String LOGIN_FORM = "User/LoginForm";
+    private static final String LOGIN_FORM = "/User/LoginForm";
     private static final List<String> ALLOWED_URIS = Arrays.asList(
             "/User/Login",
             LOGIN_FORM,
